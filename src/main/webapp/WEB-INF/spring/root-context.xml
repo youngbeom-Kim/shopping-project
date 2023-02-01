@@ -5,16 +5,20 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<!-- HikariCP -->
+	<!-- HikariCP 추가 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
  		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul"></property> 
 		<property name="username" value="root"></property>
 		<property name="password" value="ever4498450!"></property>
 	</bean>	
-	
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
+	
+	<!-- MyBatis 추가 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>	
 		
 </beans>
