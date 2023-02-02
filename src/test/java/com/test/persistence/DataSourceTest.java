@@ -29,8 +29,8 @@ public class DataSourceTest {
 			SqlSession session = sqlSessionFactory.openSession();
 		){
 			
-		System.out.println("con=" + con);
-		System.out.println("session=" + session);
+			System.out.println("con=" + con);
+			System.out.println("session=" + session);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
