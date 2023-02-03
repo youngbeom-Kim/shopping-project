@@ -152,6 +152,14 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- Log4jdbc-log4j2 추가 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+		    <version>1.16</version>
+		</dependency>
+		
 		
 
 		<!-- @Inject -->

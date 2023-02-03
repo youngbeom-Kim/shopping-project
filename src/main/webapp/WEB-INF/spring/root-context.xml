@@ -9,8 +9,12 @@
 	
 	<!-- HikariCP 추가 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<!--
  		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shopping?serverTimezone=Asia/Seoul"></property> 
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shopping?serverTimezone=Asia/Seoul"></property>
+		-->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/shopping?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="ever4498450!"></property>
 	</bean>	
