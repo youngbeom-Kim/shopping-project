@@ -23,6 +23,18 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 인터셉터 적용 -->
+    <interceptors>
+        <interceptor>
+            <mapping path="/member/login.do"></mapping>
+            <beans:bean id="loginIntreceptor" class="com.test.interceptor.LoginInterceptor"></beans:bean>
+        </interceptor>
+        <interceptor>
+            <mapping path="/admin/**"></mapping>
+            <beans:bean id="AdminIntreceptor" class="com.test.interceptor.AdminInterceptor"></beans:bean>
+        </interceptor>
+    </interceptors>
+	
 	<context:component-scan base-package="com.test.controller" />
 
 </beans:beans>
