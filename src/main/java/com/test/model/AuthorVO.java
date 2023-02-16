@@ -27,5 +27,14 @@ public class AuthorVO {
     
     /* 수정 날짜 */
     private Date updateDate;
+    
+    public void setNationId(String nationId) {
+    	this.nationId = nationId;
+    	if (nationId.equals("01")) {
+    		this.nationName = "국내";
+    	} else {
+    		this.nationName = "국외";
+    	}
+    }
 
 }

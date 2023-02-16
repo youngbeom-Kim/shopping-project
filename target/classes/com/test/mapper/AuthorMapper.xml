@@ -8,5 +8,24 @@
     <insert id="authorEnroll">
         insert into test_author(authorName, nationId, authorIntro) values(#{authorName}, #{nationId}, #{authorIntro})
     </insert>
+    
+    <!-- 작가 목록 -->
+    <select id="authorGetList" resultType="com.test.model.AuthorVO">
+    	select authorid, authorname, nationid, regdate, updatedate
+    	from test_author
+    	<if test="keyword != null">
+    		where authorname like concat('%', #{keyword}, '%')
+    	</if>
+    	order by authorid desc
+    	limit #{skip}, #{amount}
+    </select>
+    
+    <!-- 작가 총 수 -->
+    <select id="authorGetTotal" resultType="int">
+    	select count(*) from test_author
+    	<if test="keyword != null">
+    		where authorname like concat('%', #{keyword}, '%');
+    	</if>
+    </select>
 
   </mapper>
