@@ -27,5 +27,10 @@
     		where authorname like concat('%', #{keyword}, '%');
     	</if>
     </select>
+    
+    <!-- 작가 상세 페이지 -->
+    <select id="authorGetDetail" resultType="com.test.model.AuthorVO">
+    	select * from test_author where authorid = #{authorId}
+    </select>
 
   </mapper>
