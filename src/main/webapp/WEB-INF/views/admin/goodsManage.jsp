@@ -26,7 +26,7 @@
 <script>
 $(document).ready(function(){
 	
-	let eResult = '<c:out value="${enroll_result}"/>';
+	let eResult = '${enroll_result}';
 	
 	checkResult(eResult);
 	
