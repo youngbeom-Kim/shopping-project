@@ -9,5 +9,10 @@
   		insert into test_book(bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
 		values(#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})
 	</insert>
+	
+	<!-- 카테고리 리스트 -->
+	<select id="cateList" resultType="com.test.model.CateVO">
+		select * from test_bcate order by catecode
+	</select>
 
   </mapper>
