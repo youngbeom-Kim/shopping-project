@@ -43,7 +43,7 @@ public class AdminController {
 	
 	/* 상품 등록 페이지 접속 */
 	@RequestMapping(value="goodsEnroll", method=RequestMethod.GET)
-	public void goodsManageGET(Model model) throws Exception {
+	public void goodsEnrollGET(Model model) throws Exception{
 		
 		logger.info("상품 등록 페이지 접속");
 		
@@ -57,10 +57,25 @@ public class AdminController {
 		
 	}
 	
-	/* 상품 목록 페이지 접속 */
+	/* 상품 관리(상품목록) 페이지 접속 */
 	@RequestMapping(value="goodsManage", method=RequestMethod.GET)
-	public void goodsEnrollGET() throws Exception {
-		logger.info("상품 목록 페이지 접속");
+	public void goodsManageGET(Criteria cri, Model model) throws Exception{
+		
+		logger.info("상품 관리(상품목록) 페이지 접속");
+		
+		/* 상품 리스트 데이터 */
+		List list = adminService.goodsGetList(cri);
+		
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+		} else {
+			model.addAttribute("listCheck", "empty");
+			return;
+		}
+		
+		/* 페이지 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageDTO(cri, adminService.goodsGetTotal(cri)));
+		
 	}
 	
 	/* 작가 등록 페이지 접속 */
