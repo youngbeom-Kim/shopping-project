@@ -38,7 +38,11 @@
 	                    		<c:forEach items="${list}" var="list">
 	                    		<tr>
 	                    			<td><c:out value="${list.bookId}"></c:out></td>
-	                    			<td><c:out value="${list.bookName}"></c:out></td>
+	                    			<td>
+		                    			<a class="move" href='<c:out value="${list.bookId}"/>'>
+											<c:out value="${list.bookName}"></c:out>
+										</a>
+									</td>
 	                    			<td><c:out value="${list.authorName}"></c:out></td>
 	                    			<td><c:out value="${list.cateName}"></c:out></td>
 	                    			<td><c:out value="${list.bookStock}"></c:out></td>
@@ -108,7 +112,7 @@
 <script>
 $(document).ready(function(){
 	
-	let eResult = '${enroll_result}';
+	let eResult = '<c:out value="${enroll_result}"/>';
 	
 	checkResult(eResult);
 	
@@ -122,6 +126,50 @@ $(document).ready(function(){
 		
 	}
 
+});
+
+let searchForm = $('#searchForm');
+let moveForm = $('#moveForm');
+
+/* 작거 검색 버튼 동작 */
+$("#searchForm button").on("click", function(e){
+	
+	e.preventDefault();
+	
+	/* 검색 키워드 유효성 검사 */
+	if(!searchForm.find("input[name='keyword']").val()){
+		alert("키워드를 입력하십시오");
+		return false;
+	}
+	
+	searchForm.find("input[name='pageNum']").val("1");
+	
+	searchForm.submit();
+	
+});
+
+
+/* 페이지 이동 버튼 */
+$(".pageMaker_btn a").on("click", function(e){
+	
+	e.preventDefault();
+	
+	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+	
+	moveForm.submit();
+	
+});
+
+/* 상품 조회 페이지 */
+$(".move").on("click", function(e){
+	
+	e.preventDefault();
+	
+	moveForm.append("<input type='hidden' name='bookId' value='"+$(this).attr("href") + "'>");
+	moveForm.attr("action", "/admin/goodsDetail");
+	moveForm.submit();
+	
+	
 });
 </script>
 

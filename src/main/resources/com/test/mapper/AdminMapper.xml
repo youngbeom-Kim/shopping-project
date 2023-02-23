@@ -35,5 +35,12 @@
 			where bookName like concat ('%', #{keyword}, '%')
 		</if>
 	</select>
+	
+	<!-- 상품 조회 페이지 -->
+	<select id="goodsGetDetail" resultType="com.test.model.BookVO">
+		select bookId, bookName, (select authorName from test_author where authorId = test_book.authorId) authorName,
+			authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents, regDate, updateDate
+		from test_book where bookId = #{bookId}
+	</select>
 
   </mapper>

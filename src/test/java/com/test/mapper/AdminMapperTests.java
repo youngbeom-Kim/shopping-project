@@ -1,14 +1,12 @@
 package com.test.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.test.model.Criteria;
+import com.test.model.BookVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -50,25 +48,39 @@ public class AdminMapperTests {
 	*/
 	
 	/* 상품 리스트 & 상품 총 갯수 */
+//	@Test
+//	public void goodsGetListTest() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		/* 검색조건 */
+//		cri.setKeyword("테스트");
+//		
+//		/* 검색 리스트 */
+//		List list = mapper.goodsGetList(cri);
+//		for(int i = 0; i < list.size(); i++) {
+//			System.out.println("result......." + i + " : " + list.get(i));
+//		}
+//		
+//		/* 상품 총 갯수 */
+//		int result = mapper.goodsGetTotal(cri);
+//		System.out.println("resutl.........." + result);
+//		
+//		
+//	}
+	
+	/* 상품 조회 페이지 */
 	@Test
-	public void goodsGetListTest() {
+	public void goodsGetDetailTest() {
 		
-		Criteria cri = new Criteria();
+		int bookId = 150;
 		
-		/* 검색조건 */
-		cri.setKeyword("테스트");
+		BookVO result = mapper.goodsGetDetail(bookId);
 		
-		/* 검색 리스트 */
-		List list = mapper.goodsGetList(cri);
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println("result......." + i + " : " + list.get(i));
-		}
-		
-		/* 상품 총 갯수 */
-		int result = mapper.goodsGetTotal(cri);
-		System.out.println("resutl.........." + result);
+		System.out.println("상품 조회 데이터 : " + result);
 		
 		
 	}
+	
 
 }
