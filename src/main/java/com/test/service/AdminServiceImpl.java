@@ -67,4 +67,13 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.goodsGetDetail(bookId);
 	}
 
+	/* 상품 정보 수정 */
+	@Override
+	public int goodsModify(BookVO vo) {
+		
+		log.info("goodsModfiy()............");
+		
+		return adminMapper.goodsModify(vo);
+	}
+
 }

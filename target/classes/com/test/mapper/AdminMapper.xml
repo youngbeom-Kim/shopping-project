@@ -42,5 +42,12 @@
 			authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents, regDate, updateDate
 		from test_book where bookId = #{bookId}
 	</select>
+	
+	<!-- 상품 정보 수정 -->
+	<update id="goodsModify">
+		update test_book set bookName = #{bookName}, authorId = #{authorId}, publeYear = #{publeYear}, publisher = #{publisher}, cateCode = ${cateCode}, 
+		bookPrice = #{bookPrice}, bookStock = #{bookStock}, bookDiscount = #{bookDiscount}, bookIntro = #{bookIntro}, bookContents = #{bookContents}, updateDate = now()
+		where bookId = ${bookId}
+	</update>
 
   </mapper>
