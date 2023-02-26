@@ -451,9 +451,11 @@ $("input[type='file']").on("change", function(e){
 	let fileList = fileInput[0].files;
 	let fileObj = fileList[0];
 	
+	/*
 	if(!fileCheck(fileObj.name, fileObj.size)){
 		return false;
 	}
+	*/
 	
 	for(let i = 0; i < fileList.length; i++){
 		formData.append("uploadFile", fileList[i]);
@@ -465,7 +467,13 @@ $("input[type='file']").on("change", function(e){
     	contentType : false,
     	data : formData,
     	type : 'POST',
-    	dataType : 'json'
+    	dataType : 'json',
+    	success : function(result){
+    		console.log(result);
+    	},
+    	error : function(result){
+    		alert("이미지 파일이 아닙니다.");
+    	}
 	});
 	
 });
